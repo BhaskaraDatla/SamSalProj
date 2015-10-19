@@ -1,0 +1,30 @@
+<apex:page standardController="Case" extensions="caseFeedbackExtension">
+
+   <apex:includeScript value="/support/console/31.0/integration.js"/>
+   <script type="text/javascript">
+            var getCurrentCaseId = function (result){
+
+                   findCurrentCaseId(result.objectId);//Call the action function.
+
+            };
+        
+        sforce.console.onFocusedPrimaryTab(getCurrentCaseId);
+        
+  </script>
+  <apex:form >
+      <apex:actionFunction action="{!CaseDetails}" name="findCurrentCaseId" reRender="caseDetails" >
+          <apex:param name="caseId" assignTo="{!caseIdValue}" value="" />
+      </apex:actionFunction>
+  <apex:outputPanel id="caseDetails">
+      case Number      : {!theCase.CaseNumber}<br/>
+      Account Name     : {!theCase.Account.Name}<br/>
+      Contact.FirstName: {!theCase.Contact.FirstName}<br/>
+      Contact.LastName : {!theCase.Contact.LastName}<br/>
+      Contact Phone    : {!theCase.Contact.Phone}<br/>
+  </apex:outputPanel>  
+  </apex:form>
+
+
+
+
+</apex:page>

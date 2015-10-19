@@ -1,0 +1,11 @@
+<apex:page standardController="Case">
+ <apex:form >
+<apex:pageBlock mode="maindetail" title="Case Edit">
+        <apex:pageBlockSection title="General">
+          <apex:repeat value="{!$ObjectType.Case.FieldSets.EmailForm}" var="field">
+                <apex:inputField value="{!Case[field]}" />
+            </apex:repeat>
+        </apex:pageBlockSection>
+     </apex:pageBlock>
+ </apex:form>
+</apex:page>
